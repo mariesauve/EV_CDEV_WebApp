@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+
+<br />
+<br />
+
+@if (User.IsInRole("Admin"))
+{
+   
+    <div class="text-center">
+        <h2>Hi, Admin Welcome!</h2>
+        <p>
+            <button class="btn" style="background-color:mediumpurple">
+                <a class="nav-link text-dark"
+                   href="/Merch" target="_blank" >CRUD Link</a></button>
+        </p>
+    </div>
+}
+else
+{
+    <p>
+        <button class="btn" style="background-color: mediumpurple"><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" target="_blank">Login</a></button>
+
+   </p>
+}
+
+<p>
+    <button class="btn" style="background-color: mediumseagreen">
+        <a class="nav-link text-dark"
+           href="/Merch" target="_blank">CRUD Link</a>
+    </button>
+    <br />
+
+@*     <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" style="color:darkslateblue">Search</button>
+    </form> *@
+</p>
+  

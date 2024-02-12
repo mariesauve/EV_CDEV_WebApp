@@ -1,0 +1,64 @@
+﻿@page
+@model WebApp.Pages.Merch.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <button class="btn" style="background-color: mediumseagreen; font-size:14px;">
+        <a class="nav-link text-dark"
+           asp-page="Create" target="_blank">Create New</a>
+    </button>
+   @*  <a asp-page="Create">Create New</a> *@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Supplier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].VSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" style="color: mediumseagreen;">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id" style="color:mediumslateblue;">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id" style="color:palevioletred;">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
